@@ -1,10 +1,13 @@
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useState, FC} from 'react'
 import {router} from "@inertiajs/react";
 
-function PushNotificationButton(props:any) {
+type Props = {
+    vapidPublicKey: string
+}
+
+const PushNotificationButton:FC<Props> = ({vapidPublicKey}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-    const vapidPublicKey = props.vapidPublicKey;
 
     // ServiceWorker
     useEffect(() => {
